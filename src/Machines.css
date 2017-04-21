@@ -1,0 +1,9 @@
+.machine-param-container{
+  overflow: hidden;
+}
+
+.machine-param-container .col{
+  float: left;
+  width: calc(50% - 20px);
+
+}
