@@ -103,6 +103,18 @@ a:visited {
   color: white;
 }
 
+.icon-button{
+  display: inline-block;
+  margin-right: 10px;
+  line-height: 30px;
+  padding: 0 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.icon-button:hover{
+  background-color: whitesmoke;
+}
 /* End Buttons */
 
 .icon-io{
@@ -116,3 +128,29 @@ a:visited {
 .input-group{
   margin: 10px 10px;
 }
+
+/* Table */
+.generic-table{
+  overflow: hidden;
+}
+
+.generic-row{
+  overflow: hidden;
+}
+
+.col{
+  float: left;
+  width: 50%;
+}
+
+.generic-main-col{
+  width: 90%;
+  float: left;
+}
+
+.generic-button-col{
+  width: 10%;
+  float: left;
+  text-align: right;
+}
+/* Table end*/

@@ -12,12 +12,14 @@ class App extends Component {
       <div className="header"></div>
       <div className="body-container">
         <div className="side-menu gray">
-          <NavLink exact to='/' ><div className="side-button">HOME</div></NavLink>
-          <NavLink to='/machines'><div className="side-button">MACHINES</div></NavLink>
-          <NavLink to='/materials'><div className="side-button">MATERIALS</div></NavLink>
-          <NavLink to='/routing'><div className="side-button">ROUTING</div></NavLink>
-          <NavLink to='/enter_order'><div className="side-button">CREATE ORDER</div></NavLink>
-          <NavLink to='/execute_order'><div className="side-button">EXECUTE ORDER</div></NavLink>
+          <div className="side-menu-content">
+            {/*<NavLink exact to='/' ><div className="side-button">HOME</div></NavLink>*/}
+            <NavLink to='/machines'><div className="side-button">MACHINES</div></NavLink>
+            <NavLink to='/materials'><div className="side-button">MATERIALS</div></NavLink>
+            <NavLink to='/routing'><div className="side-button">ROUTING</div></NavLink>
+            <NavLink to='/enter_order'><div className="side-button">CREATE ORDER</div></NavLink>
+            <NavLink to='/execute_order'><div className="side-button">EXECUTE ORDER</div></NavLink>
+          </div>
         </div>
         <div className="content">
 
