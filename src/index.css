@@ -144,12 +144,13 @@ a:visited {
 }
 
 .generic-main-col{
-  width: 90%;
+  width: 85%;
   float: left;
+  overflow: hidden;
 }
 
 .generic-button-col{
-  width: 10%;
+  width: 15%;
   float: left;
   text-align: right;
 }

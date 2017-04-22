@@ -3,6 +3,53 @@ import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 import './App.css';
 import Home from './Home';
 import Machines from './Machines';
+import Materials from './Materials';
+
+var dummyMachines = [
+  {
+    machineName: "machine1",
+    machineDescription: "description1",
+    parameters: [{parameterName: "p1", parameterDefaultName: "v1"}]
+  },
+  {
+    machineName: "machine2",
+    machineDescription: "description2",
+    parameters: [{parameterName: "p2", parameterDefaultName: "v2"}]
+  },
+  {
+    machineName: "machine3",
+    machineDescription: "description3",
+    parameters: [{parameterName: "p3", parameterDefaultName: "v3"}]
+  },
+  {
+    machineName: "machine4",
+    machineDescription: "description4",
+    parameters: [{parameterName: "p4", parameterDefaultName: "v4"}]
+  },
+];
+
+var dummyMaterials = [
+  {
+    materialName: "material1",
+    materialDescription: "description1",
+    parameters: [{parameterName: "p1", parameterDefaultName: "v1"}]
+  },
+  {
+    materialName: "material2",
+    materialDescription: "description2",
+    parameters: [{parameterName: "p2", parameterDefaultName: "v2"}]
+  },
+  {
+    materialName: "material3",
+    materialDescription: "description3",
+    parameters: [{parameterName: "p3", parameterDefaultName: "v3"}]
+  },
+  {
+    materialName: "material4",
+    materialDescription: "description4",
+    parameters: [{parameterName: "p4", parameterDefaultName: "v4"}]
+  },
+]
 
 class App extends Component {
   render() {
@@ -24,9 +71,9 @@ class App extends Component {
         <div className="content">
 
           <div>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/machines" component={Machines} />
-            <Route exact path="/materials" component={Home} />
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/machines" render={routeProps => <Machines route={routeProps} machines={dummyMachines}/>}/>
+            <Route exact path="/materials" render={routeProps => <Materials route={routeProps} materials={dummyMaterials}/>} />
             <Route exact path="/routing" component={Home} />
             <Route exact path="/enter_order" component={Home} />
             <Route exact path="/execute_order" component={Home} />
