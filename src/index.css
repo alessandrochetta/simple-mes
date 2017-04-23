@@ -27,8 +27,10 @@ a:visited {
 
 .container-base .header{
   text-align: center;
-  padding-bottom: 15px;
+  padding: 15px;
 }
+
+
 
 .gray{
   color: rgb(118, 118, 118);
@@ -115,7 +117,9 @@ a:visited {
 .icon-button:hover{
   background-color: whitesmoke;
 }
-/* End Buttons */
+
+
+/* Input */
 
 .icon-io{
   font-size: 16pt;
@@ -143,6 +147,11 @@ a:visited {
   width: 50%;
 }
 
+.col-3{
+  float: left;
+  width: 33.33%;
+}
+
 .generic-main-col{
   width: 85%;
   float: left;
@@ -155,3 +164,7 @@ a:visited {
   text-align: right;
 }
 /* Table end*/
+
+.form-lateral-header{
+  margin-left: 10px;
+}

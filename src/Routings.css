@@ -11,6 +11,27 @@
   position: relative;
 }
 
+.operation-row{
+  position: relative;
+  margin-top: 25px;
+  overflow: hidden;
+}
+
+.add-operation-button{
+  margin-top: 25px !important;
+}
+
+.operation-header{
+  text-align: center;
+  padding: 10px 10px 0 10px;
+}
+
+.parameter-row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 .machine-name{
   line-height: 30px;
 }
@@ -67,3 +88,5 @@
 .current-machine-icon-button:hover{
   background-color: whitesmoke;
 }
+
+/* drop down */

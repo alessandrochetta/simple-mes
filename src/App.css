@@ -33,6 +33,7 @@
   padding: 10px 30px;
   cursor: pointer;
   border-radius: 3px;
+  margin-bottom: 10px;
 }
 
 .active .side-button{

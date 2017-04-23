@@ -167,11 +167,11 @@ class Machines extends Component {
           <div key={i} className="parameter-row">
             <div className="current-machine-main-col">
               <div className="input-group col">
-                <span className="input-group-addon" id="basic-addon3">Parameter name</span>
+                <span className="input-group-addon" id="basic-addon3">Operation name</span>
                 <input value={p.parameterName} onChange={((e) => this.handleCurrentElementParameterNameChange(e, i))} type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3"/>
               </div>
               <div className="input-group col">
-                <span className="input-group-addon" id="basic-addon3">Default value</span>
+                <span className="input-group-addon" id="basic-addon3">Operation value</span>
                 <input value={p.parameterDefaultName} onChange={((e) => this.handleCurrentElementParameterDefaultValueChange(e, i))} type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3"/>
               </div>
             </div>
@@ -179,7 +179,6 @@ class Machines extends Component {
               <div className="current-machine-icon-button" onClick={((e) => this.handleCurrentElementParameterDeleting(e, i))}>
                 <span className="icon-io"><CloseIcon /></span>
               </div>
-
             </div>
           </div>
         )
@@ -257,15 +256,16 @@ class Machines extends Component {
           <div className="header gray">MACHINE DETAILS</div>
 
           <div className="input-group">
-            <span className="input-group-addon" id="basic-addon3">Machine name</span>
+            <span className="input-group-addon" id="basic-addon3">Name</span>
             <input value={this.state.currentElement.machineName} onChange={this.handleCurrentElementNameChange} type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3"/>
           </div>
           <div className="input-group">
-            <span className="input-group-addon" id="basic-addon3">Machine description</span>
+            <span className="input-group-addon" id="basic-addon3">Description</span>
             <input value={this.state.currentElement.machineDescription} onChange={this.handleCurrentElementDescriptionChange} type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3"/>
           </div>
 
           <div className="machine-param-container">
+            <div className="header gray">MACHINE DETAILS</div>
               {currentElementParameters}
           </div>
 
