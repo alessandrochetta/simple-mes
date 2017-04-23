@@ -11,48 +11,56 @@ var dummyMachines = [
     _id: 0,
     machineName: "machine1",
     machineDescription: "description1",
-    parameters: [{parameterName: "p1", parameterDefaultName: "v1"}]
+    parameters: [
+      {parameterName: "p1", parameterDefaultName: "v1"},
+      {parameterName: "p2", parameterDefaultName: "v2"}]
   },
   {
     _id: 1,
     machineName: "machine2",
     machineDescription: "description2",
     parameters: [{parameterName: "p2", parameterDefaultName: "v2"}]
+  },{
+    _id: 2,
+    machineName: "machine2",
+    machineDescription: "description2",
+    parameters: [
+      {parameterName: "p1", parameterDefaultName: "v1"},
+      {parameterName: "p2", parameterDefaultName: "v2"}]
   }
 ];
 
 var dummyMaterials = [
   {
+    _id: 0,
     materialName: "material1",
-    materialDescription: "description1",
-    parameters: [{parameterName: "p1", parameterDefaultName: "v1"}]
+    materialDescription: "description1"
   },
   {
+    _id: 1,
     materialName: "material2",
-    materialDescription: "description2",
-    parameters: [{parameterName: "p2", parameterDefaultName: "v2"}]
-  }
+    materialDescription: "description2"
+  },
+  {
+    _id: 2,
+    materialName: "material3",
+    materialDescription: "description3"
+  },
+  {
+    _id: 3,
+    materialName: "material4",
+    materialDescription: "description4"
+  },
 ];
 
 var dummyRoutings = [
   {
-    routingName: "roiting1",
+    _id: 0,
+    routingName: "routing",
     routingDescription: "description1",
     routingVersion: 1,
     operations: []
   },
-  {
-    routingName: "roiting1.1",
-    routingDescription: "description1.1",
-    routingVersion: 2,
-    operations: []
-  },
-  {
-    routingName: "roiting2",
-    routingDescription: "description2",
-    routingVersion: 1,
-    operations: []
-  }
 ];
 
 class App extends Component {

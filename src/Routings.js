@@ -23,6 +23,7 @@ class Routings extends Component {
       routingName: "",
       routingDescription: "",
       routingVersion: 1,
+      routingMaterial: null,
       operations: []
     }
 
@@ -95,11 +96,12 @@ class Routings extends Component {
     var _elements = this.state.routings;
 
     // If name null return
-    if(_currentElement.routingName.length === 0){
+    if(_currentElement.routingName.length === 0 || _currentElement.routingMaterial === null){
       this.setState({
         elements: _elements,
         currentElement: null
       });
+      console.log("saving rejected: routing name or material empty.");
       return;
     }
 
@@ -135,6 +137,25 @@ class Routings extends Component {
     var _currentElement = this.state.currentElement;
     var newObject = $.extend(true, {}, this.operationPrototype);
     _currentElement.operations.push(newObject);
+    this.setState({
+      currentElement: _currentElement
+    });
+  }
+
+  handleCurrentElementMaterialChange(newValue){
+    var selectedMaterialObj = this.props.materials.find(function(m){
+      return m._id == newValue.target.value;
+    })
+
+    var _currentElement = this.state.currentElement;
+
+    if(selectedMaterialObj){
+      var materialCloned = $.extend(true, {}, selectedMaterialObj);
+      _currentElement.routingMaterial = materialCloned;
+    }else{
+      _currentElement.routingMaterial = null;
+    }
+
     this.setState({
       currentElement: _currentElement
     });
@@ -279,23 +300,64 @@ class Routings extends Component {
     return parametersDiv;
   }
 
-  render() {
+  generateMachineDropDown(operation){
     // available machines
     var availableMachinesData = $.extend(true, [], this.props.machines);
     var availableMachines = [];
 
-    availableMachinesData.unshift({
-      _id: -1,
-      machineName: "Select machine",
-      machineDescription: "",
-      parameters: []
-    })
+    if(!operation.operationMachine){
+      availableMachinesData.unshift({
+        _id: -1,
+        machineName: "Select machine",
+        machineDescription: "",
+        parameters: []
+      })
+    }
 
     availableMachinesData.forEach(function(m, i){
+      var elementToPush = <option key={i} value={m._id}>{m.machineName}</option>;
+
+      if(operation.operationMachine && m._id === operation.operationMachine._id){
+        elementToPush = <option key={i} selected="selected" value={m._id}>{m.machineName}</option>
+      }
+
       availableMachines.push(
-        <option key={i} value={m._id}>{m.machineName}</option>
+        elementToPush
       )
     })
+
+    return availableMachines;
+  }
+
+  generateMaterialsDropDown(routing){
+    // available machines
+    var availableMaterialsData = $.extend(true, [], this.props.materials);
+    var availableMaterials = [];
+
+    if(!routing.routingMaterial){
+      availableMaterialsData.unshift({
+        _id: -1,
+        materialName: "Select material",
+        materialDescription: "",
+      })
+    }
+
+    availableMaterialsData.forEach(function(m, i){
+      var elementToPush = <option key={i} value={m._id}>{m.materialName}</option>;
+
+      if(routing.routingMaterial && m._id === routing.routingMaterial._id){
+        elementToPush = <option key={i} selected="selected" value={m._id}>{m.materialName}</option>
+      }
+
+      availableMaterials.push(
+        elementToPush
+      )
+    })
+
+    return availableMaterials;
+  }
+
+  render() {
 
     // Current element
     var currentElementOperations = [];
@@ -317,7 +379,7 @@ class Routings extends Component {
               <div className="input-group col">
                 <span className="input-group-addon">Operation machine</span>
                 <select className="form-control" style={{ WebkitAppearance: "none"}} onChange={((e) => this.handleCurrentElementOperationMachineChange(e, i))}>
-                  {availableMachines}
+                  {this.generateMachineDropDown(o)}
                 </select>
               </div>
               <div className="input-group">
@@ -377,13 +439,16 @@ class Routings extends Component {
         <div key={i}>
           <div className="generic-row">
             <div className="generic-main-col">
-              <div className="col-3">
+              <div className="col-4">
                 <span className="machine-name">{m.routingName}</span>
               </div>
-              <div className="col-3">
+              <div className="col-4">
                 <span className="machine-name">{m.routingVersion}</span>
               </div>
-              <div className="col-3">
+              <div className="col-4">
+                <span className="machine-name">{m.routingMaterial ? (m.routingMaterial.materialName) : (<span>&nbsp;</span>)}</span>
+              </div>
+              <div className="col-4">
                 <span className="machine-name">{m.routingDescription ? (m.routingDescription) : (<span>&nbsp;</span>)}</span>
               </div>
             </div>
@@ -430,10 +495,21 @@ class Routings extends Component {
         {this.state.currentElement !== null &&
         <div className="container-base">
           <div className="header gray">ROUTING DETAILS</div>
-
-          <div className="input-group">
-            <span className="input-group-addon" id="basic-addon3">Name</span>
-            <input value={this.state.currentElement.routingName} onChange={this.handleCurrentElementNameChange} type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+          <div className="generic-row">
+            <div className="col">
+              <div className="input-group">
+                <span className="input-group-addon " id="basic-addon3">Name</span>
+                <input value={this.state.currentElement.routingName} onChange={this.handleCurrentElementNameChange} type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+              </div>
+            </div>
+            <div className="col">
+              <div className="input-group">
+                <span className="input-group-addon">Material</span>
+                <select className="form-control" style={{ WebkitAppearance: "none"}} onChange={((e) => this.handleCurrentElementMaterialChange(e))}>
+                  {this.generateMaterialsDropDown(this.state.currentElement)}
+                </select>
+              </div>
+            </div>
           </div>
           <div className="input-group">
             <span className="input-group-addon" id="basic-addon3">Description</span>
@@ -460,13 +536,16 @@ class Routings extends Component {
           <div className="generic-table">
             <div className="generic-row gray">
               <div className="generic-main-col">
-                <div className="col-3">
+                <div className="col-4">
                   Name
                 </div>
-                <div className="col-3">
+                <div className="col-4">
                   Version
                 </div>
-                <div className="col-3">
+                <div className="col-4">
+                  Material
+                </div>
+                <div className="col-4">
                   Description
                 </div>
               </div>

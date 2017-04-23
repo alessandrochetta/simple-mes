@@ -152,6 +152,11 @@ a:visited {
   width: 33.33%;
 }
 
+.col-4{
+  float: left;
+  width: 25%;
+}
+
 .generic-main-col{
   width: 85%;
   float: left;
