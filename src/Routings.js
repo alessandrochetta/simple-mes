@@ -532,7 +532,7 @@ class Routings extends Component {
 
 
         <div className="container-base">
-          <div className="header gray">ROUTES</div>
+          <div className="header gray">ROUTINGS</div>
           <div className="generic-table">
             <div className="generic-row gray">
               <div className="generic-main-col">

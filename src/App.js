@@ -22,8 +22,8 @@ var dummyMachines = [
     parameters: [{parameterName: "p2", parameterDefaultName: "v2"}]
   },{
     _id: 2,
-    machineName: "machine2",
-    machineDescription: "description2",
+    machineName: "machine3",
+    machineDescription: "description3",
     parameters: [
       {parameterName: "p1", parameterDefaultName: "v1"},
       {parameterName: "p2", parameterDefaultName: "v2"}]
@@ -58,8 +58,39 @@ var dummyRoutings = [
     _id: 0,
     routingName: "routing",
     routingDescription: "description1",
+    routingMaterial: {
+      _id: 2,
+      materialName: "material3",
+      materialDescription: "description3"
+    },
     routingVersion: 1,
-    operations: []
+    operations: [
+      {
+        operationName: "Operation 1",
+        operationDescription: "description",
+        operationMachine: {
+          _id: 2,
+          machineName: "machine3",
+          machineDescription: "description3",
+          parameters: [
+            {parameterName: "p1", parameterDefaultName: "v1"},
+            {parameterName: "p2", parameterDefaultName: "v2"},
+            {parameterName: "custom parameter", parameterDefaultName: "value"}]
+        }
+      },
+      {
+        operationName: "Operation 2",
+        operationDescription: "description",
+        operationMachine: {
+          _id: 1,
+          machineName: "machine2",
+          machineDescription: "description2",
+          parameters: [
+            {parameterName: "p1", parameterDefaultName: "v1"},
+            {parameterName: "custom parameter", parameterDefaultName: "value"}]
+        }
+      }
+    ]
   },
 ];
 
