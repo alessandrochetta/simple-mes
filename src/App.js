@@ -5,6 +5,7 @@ import Home from './Home';
 import Machines from './Machines';
 import Materials from './Materials';
 import Routings from './Routings';
+import Orders from './Orders';
 
 var dummyMachines = [
   {
@@ -48,7 +49,7 @@ var dummyMaterials = [
   },
   {
     _id: 3,
-    materialName: "material4",
+    materialName: "plastic_0990",
     materialDescription: "description4"
   },
 ];
@@ -92,6 +93,31 @@ var dummyRoutings = [
       }
     ]
   },
+  {
+    _id: 1,
+    routingName: "example",
+    routingDescription: "example description",
+    routingMaterial: {
+      _id: 3,
+      materialName: "plastic_0990",
+      materialDescription: "description4"
+    },
+    routingVersion: 1,
+    operations: [
+      {
+        operationName: "Operation example 1",
+        operationDescription: "description",
+        operationMachine: {
+          _id: 1,
+          machineName: "machine2",
+          machineDescription: "description2",
+          parameters: [
+            {parameterName: "p1", parameterDefaultName: "v1"},
+            {parameterName: "tag09", parameterDefaultName: "1.1"}]
+        }
+      }
+    ]
+  },
 ];
 
 class App extends Component {
@@ -117,7 +143,7 @@ class App extends Component {
             <Route  path="/machines" render={routeProps => <Machines route={routeProps} machines={dummyMachines}/>}/>
             <Route  path="/materials" render={routeProps => <Materials route={routeProps} materials={dummyMaterials}/>} />
             <Route  path="/routings" render={routeProps => <Routings route={routeProps} routings={dummyRoutings} materials={dummyMaterials} machines={dummyMachines}/>} />
-            <Route  path="/orders" component={Home} />
+            <Route  path="/orders" render={routeProps => <Orders route={routeProps} routings={dummyRoutings}/>} />
           </div>
 
         </div>
