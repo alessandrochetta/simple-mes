@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
+import { HashRouter as Router, Route, NavLink, Redirect} from 'react-router-dom';
 import './App.css';
 import Home from './Home';
 import Machines from './Machines';
@@ -129,7 +129,6 @@ class App extends Component {
       <div className="body-container">
         <div className="side-menu gray">
           <div className="side-menu-content">
-            {/*<NavLink exact to='/' ><div className="side-button">HOME</div></NavLink>*/}
             <NavLink to='/orders'><div className="side-button">ORDERS</div></NavLink>
             <NavLink to='/routings'><div className="side-button">ROUTINGS</div></NavLink>
             <NavLink to='/machines'><div className="side-button">MACHINES</div></NavLink>
@@ -139,7 +138,8 @@ class App extends Component {
         <div className="content">
 
           <div>
-            <Route exact path="/" render={routeProps => <Orders route={routeProps} routings={dummyRoutings}/>}/>
+            {/*<Route exact path="/" render={routeProps => <Orders route={routeProps} routings={dummyRoutings}/>}/>*/}
+            <Redirect from="/" to="/orders"/>
             <Route  path="/machines" render={routeProps => <Machines route={routeProps} machines={dummyMachines}/>}/>
             <Route  path="/materials" render={routeProps => <Materials route={routeProps} materials={dummyMaterials}/>} />
             <Route  path="/routings" render={routeProps => <Routings route={routeProps} routings={dummyRoutings} materials={dummyMaterials} machines={dummyMachines}/>} />

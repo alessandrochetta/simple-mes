@@ -12,14 +12,17 @@
 
 /* Side */
 .side-menu{
-  float: left;
-  width: 16%;
-  padding: 2% 0 2% 2%;
   position: relative;
+  float: left;
+  max-width: 16%;
+  width: 16%;
+  margin: 2% 0 2% 2%;
 }
 
 .side-menu-content{
   position: fixed;
+  max-width: inherit;
+  width: calc(100% - 2%);
   top: 50%;
   transform: translate(0, -50%);
 }
