@@ -167,11 +167,11 @@ class Machines extends Component {
           <div key={i} className="parameter-row">
             <div className="current-machine-main-col">
               <div className="input-group col">
-                <span className="input-group-addon" id="basic-addon3">Operation name</span>
+                <span className="input-group-addon" id="basic-addon3">Parameter name</span>
                 <input value={p.parameterName} onChange={((e) => this.handleCurrentElementParameterNameChange(e, i))} type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3"/>
               </div>
               <div className="input-group col">
-                <span className="input-group-addon" id="basic-addon3">Operation value</span>
+                <span className="input-group-addon" id="basic-addon3">Parameter default value</span>
                 <input value={p.parameterDefaultName} onChange={((e) => this.handleCurrentElementParameterDefaultValueChange(e, i))} type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3"/>
               </div>
             </div>

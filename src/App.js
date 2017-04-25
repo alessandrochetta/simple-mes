@@ -139,7 +139,7 @@ class App extends Component {
         <div className="content">
 
           <div>
-            <Route exact path="/" component={Home}/>
+            <Route exact path="/" render={routeProps => <Orders route={routeProps} routings={dummyRoutings}/>}/>
             <Route  path="/machines" render={routeProps => <Machines route={routeProps} machines={dummyMachines}/>}/>
             <Route  path="/materials" render={routeProps => <Materials route={routeProps} materials={dummyMaterials}/>} />
             <Route  path="/routings" render={routeProps => <Routings route={routeProps} routings={dummyRoutings} materials={dummyMaterials} machines={dummyMachines}/>} />
