@@ -6,6 +6,7 @@ import Machines from './Machines';
 import Materials from './Materials';
 import Routings from './Routings';
 import Orders from './Orders';
+import $ from 'jquery';
 
 var dummyMachines = [
   {
@@ -121,6 +122,29 @@ var dummyRoutings = [
 ];
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      materials: [],
+    };
+
+    // Bindings
+    this.getAllMaterials = this.getAllMaterials.bind(this);
+    this.getAllMaterials();
+  }
+
+  getAllMaterials(){
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:3000/api/getAllMaterials",
+      success: function(data){
+        this.setState({materials: data});
+      }.bind(this)
+    });
+  }
+
   render() {
     return (
       <Router>
@@ -141,8 +165,8 @@ class App extends Component {
             {/*<Route exact path="/" render={routeProps => <Orders route={routeProps} routings={dummyRoutings}/>}/>*/}
             <Redirect from="/" to="/orders"/>
             <Route  path="/machines" render={routeProps => <Machines route={routeProps} machines={dummyMachines}/>}/>
-            <Route  path="/materials" render={routeProps => <Materials route={routeProps} materials={dummyMaterials}/>} />
-            <Route  path="/routings" render={routeProps => <Routings route={routeProps} routings={dummyRoutings} materials={dummyMaterials} machines={dummyMachines}/>} />
+            <Route  path="/materials" render={routeProps => <Materials route={routeProps} materials={this.state.materials}/>} />
+            <Route  path="/routings" render={routeProps => <Routings route={routeProps} routings={dummyRoutings} materials={this.state.materials} machines={dummyMachines}/>} />
             <Route  path="/orders" render={routeProps => <Orders route={routeProps} routings={dummyRoutings}/>} />
           </div>
 

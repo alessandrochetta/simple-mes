@@ -63,7 +63,12 @@ class Materials extends Component {
       return;
     }
 
-    // check if the element is already within the array, if yes
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3000/api/insertMaterial",
+      data: _currentElement,
+      success: function(){}
+    });
     _elements.push(_currentElement);
 
     this.setState({
@@ -87,6 +92,7 @@ class Materials extends Component {
   /* Generic events --------------------------------------------------*/
   handleNewElementAddButton(){
     var newObject = $.extend(true, {}, this.elementPrototype);
+    newObject._id = -1;
     this.setState({
       currentElement: newObject
     });
